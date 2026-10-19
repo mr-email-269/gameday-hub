@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-19T18:53:04-04:00",
+ "generated_at": "2026-10-19T19:36:39-04:00",
  "advisor": {
-  "state": "idle",
-  "last_active": "2026-10-19T16:42:28",
-  "now": "Waiting for your next text"
+  "state": "working",
+  "last_active": "2026-10-19T19:36:31",
+  "now": "Watching the Monday night game for your guys"
  },
  "delegations": [],
  "research": {
@@ -34,6 +34,28 @@
    "3e2236848b3b873b": true
   },
   "updated": "2026-10-19T18:52:21",
-  "log": []
+  "log": [
+   {
+    "k": "53e2c91a638cfc25",
+    "ts": "2026-10-19T19:36:31",
+    "kind": "pregame",
+    "line": "WSH @ SF kicks off soon. Your starters in it: White. Your opponent's: Stevens",
+    "texted": false
+   },
+   {
+    "k": "fdb71ed665aff388",
+    "ts": "2026-10-19T19:36:31",
+    "kind": "pregame",
+    "line": "WSH @ SF kicks off soon. Your starters in it: Purdy",
+    "texted": false
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T19:36:31",
+    "kind": "pregame",
+    "line": "WSH @ SF kicks off soon. Your starters in it: Purdy, Evans, Pineiro. Your opponent's: Diggs, Samuel",
+    "texted": false
+   }
+  ]
  }
 }
