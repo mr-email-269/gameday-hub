@@ -2,7 +2,7 @@
 // Gameday app v2: Team (Sleeper, straight from the phone), Map (advisor + what it hands off), Research (queue + reports).
 // Map/Research read ./data/feed.json (a sanitised public feed; Pages caches for minutes, so the page shows "updated HH:MM").
 const API = 'https://api.sleeper.app';
-const SUBS = ['Lineup', 'Waivers', 'Alerts', 'Trades'];
+const SUBS = ['Lineup', 'Waivers', 'Alerts', 'Trades', 'Live'];
 const BAD = {Out: 'OUT', IR: 'IR', PUP: 'PUP', Sus: 'SUSP', Doubtful: 'DOUBTFUL', NA: 'OUT'};
 const SLOT = {FLEX: ['RB', 'WR', 'TE'], WRRB_FLEX: ['RB', 'WR'], REC_FLEX: ['WR', 'TE'], SUPER_FLEX: ['QB', 'RB', 'WR', 'TE'], IDP_FLEX: ['DL', 'LB', 'DB']};
 const SKIP = new Set(['BN', 'IR', 'TAXI']);
@@ -282,13 +282,60 @@ function vTrades() {
       <div class="chips">${cfg.to ? qs.map(q => `<a class="pbtn sm" href="${esc(smsHref(q))}">${esc(q.replace(': ', '…'))}</a>`).join('') : ''}</div>`)
     + lane('l-idle', 'Recent trades in your league', trades ? null : 0, trades || `<p class="note">No trades in the last two weeks.</p>`);
 }
+// ---- Live: per-team live-game text ticks + activity log ----
+// The texter runs on the advisor's side; a tick travels as a text ("Live texts off: <team>") and the feed confirms it.
+const KEYS = new Map();    // league_id -> feed key (sha256 prefix, as the exporter makes it; the feed never has raw ids)
+async function teamKeys() {
+  if (!BASE || !BASE.leagues || !(window.crypto && crypto.subtle)) return;
+  for (const l of BASE.leagues) {
+    if (KEYS.has(l.league_id)) continue;
+    const h = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(String(l.league_id)));
+    KEYS.set(l.league_id, Array.from(new Uint8Array(h).slice(0, 8), b => b.toString(16).padStart(2, '0')).join(''));
+  }
+}
+const LIVEK = {td: ['TD', 'done'], pick6: ['Pick-six', 'bad'], int: ['Pick', 'bad'], fumble: ['Fumble', 'bad'], fg: ['Long FG', 'ok'],
+               big: ['Big play', 'ok'], injury: ['Injury', 'bad'], back: ['Back in', 'done'], lead: ['Matchup', 'wait'],
+               half: ['Halftime', 'park'], final: ['Final', 'wait'], pregame: ['Pregame', 'park'], out: ['Out', 'bad'], pref: ['Setting', 'park']};
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+function livePend() { try { return JSON.parse(store.get('livepend') || '{}') || {}; } catch (e) { return {}; } }
+function liveState(id) {
+  const k = KEYS.get(id), t = FEED && FEED.live && FEED.live.texts || {};
+  const conf = k && k in t ? !!t[k] : true;                     // no pref yet = texts on
+  const p = livePend()[id];
+  return p && p.on !== conf && Date.now() - p.at < 20 * 60000 ? {on: p.on, pending: true} : {on: conf, pending: false};
+}
+const liveText = (l, on) => `Live texts ${on ? 'on' : 'off'}: ${(l.name || '').trim()}`;
+function vLive() {
+  const ticks = BASE.leagues.map(l => {
+    const s = liveState(l.league_id), href = cfg.to ? smsHref(liveText(l, !s.on)) : '';
+    return `<a class="lvt${s.on ? ' on' : ''}${s.pending ? ' pend' : ''}" ${href ? `href="${esc(href)}"` : 'aria-disabled="true"'} data-live="${esc(l.league_id)}" role="checkbox" aria-checked="${s.on}">
+      <span class="bx" aria-hidden="true">${s.on ? CHECK : ''}</span><span class="lvn"><b>${esc((l.name || 'League').trim())}</b><small>${s.pending ? 'Press send in Messages to confirm' : s.on ? 'Texts for the big stuff' : 'Log only, no texts'}</small></span>${s.pending ? pill('Waiting', 'wait') : ''}</a>`;
+  }).join('');
+  const k = KEYS.get(D.lg.league_id);
+  const all = (FEED && FEED.live && FEED.live.log || []).filter(r => r.k === k || (r.k === '' && r.kind === 'pref'));
+  const rows = all.slice(-80).reverse();
+  let day = '', log = '';
+  for (const r of rows) {
+    const d = new Date(r.ts), lbl = isNaN(d) ? '' : new Date().toDateString() === d.toDateString() ? 'Today' : d.toLocaleDateString([], {weekday: 'short', month: 'short', day: 'numeric'});
+    if (lbl !== day) { day = lbl; log += `<div class="lvd">${esc(lbl)}</div>`; }
+    const [kl, k0] = LIVEK[r.kind] || [r.kind, ''], kc = r.kind === 'td' && /opponent/i.test(r.line) ? 'bad' : k0;
+    log += `<div class="ht lvr k-${esc(kc)}"><span class="rn">${esc(r.line)}</span><span class="pts">${isNaN(d) ? '' : esc(hhmm(d))}</span>
+      <div class="rs">${pill(kl, kc)}${r.texted ? pill('Texted you', 'ok') : ''}</div></div>`;
+  }
+  const on = BASE.leagues.filter(l => liveState(l.league_id).on).length;
+  return pageTop('Live games', counts([['ok', on, 'texting'], ['park', BASE.leagues.length - on, 'log only'], ['done', all.length, 'in this log']]))
+    + lane('l-acc', 'Live game texts', null, `<p class="note">Tick a team to get texts during its games. Only the big stuff gets a text: <b>your starter scores or gets hurt, a starter ruled out, your matchup flipping, and the final</b>. Everything else just lands in the log.</p>
+      <div class="lvts">${ticks}</div>${cfg.to ? '' : '<p class="note">Open this app from your advisor\'s link to change these.</p>'}`)
+    + lane('l-idle', 'Live activity · ' + (D.lg.name || '').trim(), rows.length || 0, log || `<p class="note">Nothing yet. During games, every play that matters to this team shows up here, newest first.</p>`,
+      `<span class="pts">${esc(feedTime())}</span>`);
+}
 function vTeam() {
   const seg = `<div class="seg" role="tablist">${SUBS.map(s => `<button type="button" role="tab" data-s="${s}" class="${s === cfg.sub ? 'on' : ''}" aria-selected="${s === cfg.sub}">${s}</button>`).join('')}</div>`;
   if (!cfg.u) return setupHTML();
   if (DERR) return seg + DERR;
   if (!D) return seg + `<p class="empty">Loading your team…</p>`;
   if (!D.mine) return seg + `<p class="empty">You're not on a team in ${esc(D.lg.name)}.</p>`;
-  try { return seg + ({Lineup: vLineup, Waivers: vWaivers, Alerts: vAlerts, Trades: vTrades}[cfg.sub])(); }
+  try { return seg + ({Lineup: vLineup, Waivers: vWaivers, Alerts: vAlerts, Trades: vTrades, Live: vLive}[cfg.sub])(); }
   catch (e) { console.error(e); return seg + `<p class="empty">Something didn't load right. Tap refresh to try again.</p>`; }
 }
 function setupHTML(msg) {
@@ -490,6 +537,7 @@ async function goTeam() {
     BASE = await loadBase();
     if (!BASE.leagues.length) { DERR = setupHTML(`No ${BASE.season} leagues found for "${cfg.u}". Double-check the username?`); D = null; }
     else {
+      await teamKeys();
       const lg = pickLeague(), b = BASE;
       cfg.league = lg.league_id; store.set('league', cfg.league); render();
       const d = await loadLeague(lg);
@@ -552,8 +600,16 @@ $('nav').onclick = e => {
   if (cfg.page !== 'team') loadFeed().then(render);
 };
 $('main').onclick = e => {
-  const t = e.target.closest('[data-s],[data-sel],[data-rep],[data-act],[data-go]'); if (!t) return;
-  if (t.dataset.s) { cfg.sub = t.dataset.s; store.set('sub', cfg.sub); render(); }
+  const t = e.target.closest('[data-s],[data-sel],[data-rep],[data-act],[data-go],[data-live]'); if (!t) return;
+  if (t.dataset.live) {                 // the link opens Messages with the on/off text; show it pending until the feed confirms
+    if (!t.getAttribute('href')) { e.preventDefault(); return; }
+    const p = livePend(); p[t.dataset.live] = {on: !liveState(t.dataset.live).on, at: Date.now()};
+    store.set('livepend', JSON.stringify(p)); setTimeout(render, 50);
+  }
+  else if (t.dataset.s) {
+    cfg.sub = t.dataset.s; store.set('sub', cfg.sub); render();
+    if (cfg.sub === 'Live' && (!FAT || Date.now() - FAT > 30000)) loadFeed().then(render);
+  }
   else if (t.dataset.sel) { SEL = t.dataset.sel; render(); document.querySelector('.dock')?.scrollIntoView({behavior: 'smooth', block: 'nearest'}); }
   else if (t.dataset.rep) openReport(t.dataset.rep);
   else if (t.dataset.go) { cfg.page = t.dataset.go; store.set('page', cfg.page); render(); scrollTo(0, 0); }

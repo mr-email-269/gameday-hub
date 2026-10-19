@@ -175,3 +175,23 @@ main{padding:10px 16px 40px}
 .tfix{position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--dk-raise);color:var(--dk-on-raise);
   font-size:11px;font-weight:800;line-height:18px;text-align:center;box-shadow:0 0 0 2px var(--dk-ground)}
 .lgp.away{visibility:hidden}
+
+/* Live: per-team live-game text ticks + activity log */
+.lvts{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.lvt{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 10px;border-radius:12px;text-decoration:none;color:var(--dk-ink);
+  background:var(--dk-surface);box-shadow:inset 0 0 0 1px var(--dk-line-2);-webkit-tap-highlight-color:transparent}
+.lvt .bx{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:7px;box-shadow:inset 0 0 0 2px var(--dk-ink-3);color:var(--dk-on-accent)}
+.lvt .bx svg{width:18px;height:18px}
+.lvt.on .bx{background:var(--dk-accent);box-shadow:none}
+.lvt.pend{box-shadow:inset 0 0 0 1.5px var(--dk-waiting)}
+.lvt .lvn{flex:1;min-width:0;display:flex;flex-direction:column}
+.lvt .lvn b{font-size:15px;font-weight:800;line-height:19px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lvt .lvn small{font-size:12.5px;font-weight:650;color:var(--dk-ink-2)}
+.lvt[aria-disabled=true]{opacity:.6}
+.lvd{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--dk-ink-3);margin:10px 2px 4px}
+.lvd:first-child{margin-top:2px}
+.hl-t .lvr{margin-bottom:6px}
+.lvr .rn{white-space:normal}
+.lvr.k-done{--bar:var(--dk-done)}.lvr.k-bad{--bar:var(--dk-raise)}.lvr.k-ok{--bar:var(--dk-working)}.lvr.k-wait{--bar:var(--dk-waiting)}.lvr.k-park{--bar:var(--dk-idle)}
+.lvr .st{font-size:12px;padding:2px 9px;gap:5px}
+.lvr .st::before{width:6px;height:6px}
