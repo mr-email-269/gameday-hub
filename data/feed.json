@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T18:51:32-04:00",
+ "generated_at": "2026-10-19T18:53:04-04:00",
  "advisor": {
   "state": "idle",
   "last_active": "2026-10-19T16:42:28",
@@ -27,8 +27,13 @@
  },
  "features": [],
  "live": {
-  "texts": {},
-  "updated": "",
+  "texts": {
+   "112deb3ab87871ef": true,
+   "fdb71ed665aff388": true,
+   "53e2c91a638cfc25": true,
+   "3e2236848b3b873b": true
+  },
+  "updated": "2026-10-19T18:52:21",
   "log": []
  }
 }
