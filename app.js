@@ -58,23 +58,31 @@ async function allPlayers() {
 }
 
 let D = null, DERR = '', FEED = null, FERR = false, FAT = null, REPORT = null, SEL = 'advisor', Q = '';
+let BASE = null;           // once per visit: NFL state, the user, his leagues, projections, schedule, trending
+const LG = new Map();      // league_id -> that league's loaded team, so switching teams is a swap, not a reload
 
-async function load() {
+async function loadBase() {
   const st = await getJSON('/v1/state/nfl');
   const season = st.league_season || st.season, week = Math.max(1, st.display_week || st.week || 1);
   const user = await getJSON('/v1/user/' + encodeURIComponent(cfg.u));
   if (!user || !user.user_id) throw new Error('nouser');
   const leagues = (await getJSON(`/v1/user/${user.user_id}/leagues/nfl/${season}`)) || [];
   if (!leagues.length) return {st, user, leagues, season, week};
-  const lg = leagues.find(l => l.league_id === cfg.league) || leagues.find(l => l.status === 'in_season') || leagues[0];
-  const id = lg.league_id;
-  const [rosters, users, matchups, proj, sched, trend, drops, tx1, tx0] = await Promise.all([
-    getJSON(`/v1/league/${id}/rosters`), getJSON(`/v1/league/${id}/users`),
-    getJSON(`/v1/league/${id}/matchups/${week}`).catch(() => []),
+  const [proj, sched, trend, drops] = await Promise.all([
     getJSON(`/projections/nfl/${season}/${week}?season_type=regular&position[]=QB&position[]=RB&position[]=WR&position[]=TE&position[]=K&position[]=DEF`).catch(() => []),
     getJSON(`/schedule/nfl/regular/${season}`).catch(() => []),
     getJSON('/v1/players/nfl/trending/add?lookback_hours=24&limit=80').catch(() => []),
     getJSON('/v1/players/nfl/trending/drop?lookback_hours=24&limit=100').catch(() => []),
+  ]);
+  const games = {};
+  for (const g of sched || []) if (g.week === week) { games[g.home] = {opp: g.away, home: true}; games[g.away] = {opp: g.home, home: false}; }
+  return {st, user, leagues, season, week, proj, games, trend, drops};
+}
+async function loadLeague(lg) {
+  const {st, user, leagues, season, week, proj, games, trend, drops} = BASE, id = lg.league_id;
+  const [rosters, users, matchups, tx1, tx0] = await Promise.all([
+    getJSON(`/v1/league/${id}/rosters`), getJSON(`/v1/league/${id}/users`),
+    getJSON(`/v1/league/${id}/matchups/${week}`).catch(() => []),
     getJSON(`/v1/league/${id}/transactions/${week}`).catch(() => []),
     week > 1 ? getJSON(`/v1/league/${id}/transactions/${week - 1}`).catch(() => []) : [],
   ]);
@@ -102,10 +110,9 @@ async function load() {
       else if (/^[A-Z]{2,3}$/.test(p)) P[p] = {name: p + ' D/ST', pos: 'DEF', team: p};
     }
   }
-  const games = {};
-  for (const g of sched || []) if (g.week === week) { games[g.home] = {opp: g.away, home: true}; games[g.away] = {opp: g.home, home: false}; }
   return {st, user, leagues, lg, season, week, rosters, users, matchups, P, pts, games, mine, rostered, trend, drops, tx: [...tx1, ...tx0], at: new Date()};
 }
+const pickLeague = () => BASE.leagues.find(l => l.league_id === cfg.league) || BASE.leagues.find(l => l.status === 'in_season') || BASE.leagues[0];
 
 const pl = id => D.P[id] || {name: id === '0' || !id ? 'Empty' : 'Player ' + id, pos: '?'};
 function opp(id) {
@@ -204,7 +211,6 @@ function vSeason() {
   if (!(s.wins || s.losses || s.ties)) return '';
   const byRec = [...D.rosters].sort((a, b) => (b.settings.wins - a.settings.wins) || (fp(b) - fp(a)));
   const byPF = [...D.rosters].sort((a, b) => fp(b) - fp(a));
-  const ord = n => n + (['th', 'st', 'nd', 'rd'][(n % 100 - 20) % 10] || ['th', 'st', 'nd', 'rd'][n % 100] || 'th');
   const rank = byRec.findIndex(r => r.roster_id === D.mine.roster_id) + 1, pf = byPF.findIndex(r => r.roster_id === D.mine.roster_id) + 1;
   return lane('l-done', 'Season so far', null, `<div class="ht" style="--bar:var(--dk-done)"><span class="rn">${s.wins}–${s.losses}${s.ties ? '–' + s.ties : ''} · ${ord(rank)} of ${D.rosters.length}</span><span></span>
     <div class="rs">Points for ${f1(fp(D.mine))} (${ord(pf)} in the league)</div></div>`);
@@ -379,6 +385,63 @@ async function openReport(slug) {
   if (REPORT && REPORT.slug === slug) render();
 }
 
+// ---- team switcher (one tap, on every page; remembers the last pick) ----
+const ord = n => n + (['th', 'st', 'nd', 'rd'][(n % 100 - 20) % 10] || ['th', 'st', 'nd', 'rd'][n % 100] || 'th');
+function teamInfo(d) {
+  if (!d || !d.mine) return null;
+  const s = d.mine.settings || {}, fp = r => ((r.settings || {}).fpts || 0) + ((r.settings || {}).fpts_decimal || 0) / 100;
+  const played = s.wins || s.losses || s.ties;
+  const byRec = [...d.rosters].sort((a, b) => ((b.settings || {}).wins - (a.settings || {}).wins) || (fp(b) - fp(a)));
+  const me = d.users.find(u => u.user_id === d.user.user_id) || {};
+  const keep = D; D = d;   // badge() reads D
+  let fix = 0;
+  try { fix = (d.mine.starters || []).filter(id => badge(id)[1] === 'bad').length; } finally { D = keep; }
+  return {rec: played ? `${s.wins}–${s.losses}${s.ties ? '–' + s.ties : ''} · ${ord(byRec.findIndex(r => r.roster_id === d.mine.roster_id) + 1)}` : '',
+          av: (me.metadata || {}).avatar || '', fix};
+}
+function teamStrip() {
+  const el = $('tms');
+  if (!BASE || !BASE.leagues || BASE.leagues.length < 2 || !cfg.u) { el.hidden = true; el.innerHTML = ''; return; }
+  const cur = D && D.lg ? D.lg.league_id : cfg.league;
+  const chips = BASE.leagues.map(l => {
+    const i = teamInfo(LG.get(l.league_id)), on = l.league_id === cur, name = (l.name || 'League').trim();
+    const av = /^https:\/\/sleepercdn\.com\//.test(i && i.av || '') ? i.av : l.avatar ? 'https://sleepercdn.com/avatars/thumbs/' + l.avatar : '';
+    const pic = av ? `<img src="${esc(av)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : esc(Array.from(name)[0] || '?');
+    return `<button type="button" class="tm${on ? ' on' : ''}" data-lg="${esc(l.league_id)}" role="tab" aria-selected="${on}">
+      <span class="tav" aria-hidden="true">${pic}</span><span class="tx"><b>${esc(name)}</b><small>${esc(i ? i.rec || 'Not started' : on && !D ? 'Loading…' : '')}</small></span>
+      ${i && i.fix ? `<span class="tfix" title="${i.fix} to fix before kickoff" aria-label="${i.fix} to fix">${i.fix}</span>` : ''}</button>`;
+  }).join('');
+  const old = el.querySelector('.trow'), keepX = old ? old.scrollLeft : 0;
+  el.hidden = false;
+  el.innerHTML = `<div class="tcap">Your teams <span>${BASE.leagues.length}</span></div><div class="trow" role="tablist" aria-label="Your teams">${chips}</div>`;
+  const row = el.querySelector('.trow'), on = row.querySelector('.tm.on');
+  row.scrollLeft = keepX;
+  if (on && (on.offsetLeft < row.scrollLeft || on.offsetLeft + on.offsetWidth > row.scrollLeft + row.clientWidth)) row.scrollLeft = on.offsetLeft - 12;
+}
+async function switchTeam(id) {
+  if (!BASE || !BASE.leagues.some(l => l.league_id === id)) return;
+  cfg.league = id; store.set('league', id);
+  const moved = cfg.page !== 'team' || REPORT;
+  if (cfg.page !== 'team') { cfg.page = 'team'; store.set('page', 'team'); }
+  REPORT = null;
+  if (moved) scrollTo(0, 0);
+  if (LG.has(id)) { D = LG.get(id); DERR = ''; return render(); }
+  D = null; DERR = ''; render();
+  try { LG.set(id, await loadLeague(BASE.leagues.find(l => l.league_id === id))); }
+  catch (e) { console.error(e); if (cfg.league === id) DERR = `<p class="empty">Couldn't reach Sleeper just now. Tap refresh to try again.</p>`; }
+  if (cfg.league === id) { D = LG.get(id) || null; render(); }
+}
+// Load his other teams quietly once the first one is up, so each switch is instant and the chips show records.
+async function prefetch() {
+  for (const l of BASE ? BASE.leagues : []) {
+    if (LG.has(l.league_id)) continue;
+    const b = BASE;
+    try { const d = await loadLeague(l); if (b === BASE) LG.set(l.league_id, d); } catch (e) {}
+    if (b !== BASE) return;
+    teamStrip();
+  }
+}
+
 // ---- chrome ----
 const MOON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>';
 const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
@@ -391,11 +454,13 @@ function chrome() {
   document.querySelectorAll('.dkn-t').forEach(b => { const on = b.dataset.p === cfg.page; b.classList.toggle('on', on); on ? b.setAttribute('aria-current', 'page') : b.removeAttribute('aria-current'); });
   const ta = $('textadv'); ta.hidden = !cfg.to; if (cfg.to) ta.href = smsHref('');
   const lw = $('lgp');
-  if (D && D.lg) {
-    lw.hidden = false; $('lgname').textContent = D.lg.name;
-    $('lg').innerHTML = D.leagues.map(l => `<option value="${esc(l.league_id)}"${l.league_id === D.lg.league_id ? ' selected' : ''}>${esc(l.name)}</option>`).join('');
-    $('lg').disabled = D.leagues.length < 2; lw.querySelector('.cv').hidden = D.leagues.length < 2;
+  const cur = BASE && BASE.leagues && (BASE.leagues.find(l => l.league_id === cfg.league) || (D && D.lg));
+  if (cur) {
+    lw.hidden = false; $('lgname').textContent = cur.name;
+    $('lg').innerHTML = BASE.leagues.map(l => `<option value="${esc(l.league_id)}"${l.league_id === cur.league_id ? ' selected' : ''}>${esc(l.name)}</option>`).join('');
+    $('lg').disabled = BASE.leagues.length < 2; lw.querySelector('.cv').hidden = BASE.leagues.length < 2;
   } else lw.hidden = true;
+  teamStrip();
   fitBrand();
 }
 function fitBrand() {
@@ -418,12 +483,23 @@ function render() {
   renderFeat();
 }
 async function goTeam() {
+  BASE = null; LG.clear();
   if (!cfg.u) { D = null; return render(); }
   DERR = ''; D = null; render();
   try {
-    const d = await load();
-    if (!d.leagues.length) { DERR = setupHTML(`No ${d.season} leagues found for "${cfg.u}". Double-check the username?`); D = null; }
-    else { D = d; cfg.league = D.lg.league_id; store.set('league', cfg.league); }
+    BASE = await loadBase();
+    if (!BASE.leagues.length) { DERR = setupHTML(`No ${BASE.season} leagues found for "${cfg.u}". Double-check the username?`); D = null; }
+    else {
+      const lg = pickLeague(), b = BASE;
+      cfg.league = lg.league_id; store.set('league', cfg.league); render();
+      const d = await loadLeague(lg);
+      if (b !== BASE) return;
+      LG.set(lg.league_id, d);
+      if (cfg.league === lg.league_id) D = d;
+      else if (LG.has(cfg.league)) D = LG.get(cfg.league);
+      render(); prefetch();
+      return;
+    }
   } catch (e) {
     console.error(e);
     DERR = e.message === 'nouser' ? setupHTML(`Couldn't find a Sleeper user called "${cfg.u}".`) : `<p class="empty">Couldn't reach Sleeper just now. Tap refresh to try again.</p>`;
@@ -484,7 +560,8 @@ $('main').onclick = e => {
   else if (t.dataset.act === 'back') { REPORT = null; render(); }
   else if (t.dataset.act === 'feed') { t.textContent = 'Refreshing…'; loadFeed().then(render); }
 };
-$('lg').onchange = e => { cfg.league = e.target.value; store.set('league', cfg.league); goTeam(); };
+$('lg').onchange = e => switchTeam(e.target.value);
+$('tms').onclick = e => { const t = e.target.closest('[data-lg]'); if (t) switchTeam(t.dataset.lg); };
 $('refresh').onclick = async () => {
   const r = $('refresh'); r.classList.add('spin');
   await Promise.all([loadFeed(), cfg.page === 'team' ? goTeam() : Promise.resolve()]);
@@ -496,6 +573,9 @@ $('theme').onclick = () => {
 };
 $('brand').onclick = e => { e.preventDefault(); cfg.page = 'team'; store.set('page', 'team'); REPORT = null; render(); scrollTo(0, 0); };
 addEventListener('resize', fitBrand);
+// The header's league pill is the switcher's sticky stand-in: hidden while the team chips are on screen, back once scrolled past.
+if (window.IntersectionObserver) new IntersectionObserver(es => { for (const e of es) $('lgp').classList.toggle('away', e.isIntersecting); },
+  {rootMargin: '-200px 0px 0px 0px'}).observe($('tms'));
 document.addEventListener('visibilitychange', () => { if (!document.hidden && FAT && Date.now() - FAT > 60000) loadFeed().then(render); });
 if (document.fonts) document.fonts.ready.then(fitBrand);
 

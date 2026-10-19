@@ -154,3 +154,24 @@ main{padding:10px 16px 40px}
 .foot{font-size:12.5px;color:var(--dk-ink-3);text-align:center;margin:8px 0 0}
 .big{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 2px}
+
+/* team switcher: every team one tap away, on every page */
+.tms{padding:8px 0 0;border-bottom:1px solid var(--dk-line)}
+.tcap{display:flex;align-items:center;gap:6px;padding:0 16px 6px;font-size:12px;font-weight:800;color:var(--dk-ink-3);text-transform:uppercase;letter-spacing:.04em}
+.tcap span{font-size:11px;color:var(--dk-ink-2);background:var(--dk-surface-2);border-radius:999px;padding:0 6px}
+.trow{display:flex;gap:8px;overflow-x:auto;padding:6px 16px 8px;scroll-snap-type:x proximity;scroll-padding:0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.trow::-webkit-scrollbar{display:none}
+.tm{position:relative;flex:none;display:flex;align-items:center;gap:8px;min-height:52px;max-width:200px;padding:6px 12px 6px 6px;border:0;border-radius:var(--dk-r-pill);
+  background:var(--dk-surface);box-shadow:inset 0 0 0 1px var(--dk-line-2);text-align:left;scroll-snap-align:start;color:var(--dk-ink)}
+.tm.on{background:var(--dk-accent);color:var(--dk-on-accent);box-shadow:none}
+.tav{flex:none;width:36px;height:36px;border-radius:50%;overflow:hidden;background:var(--dk-surface-2);color:var(--dk-ink-2);display:inline-flex;
+  align-items:center;justify-content:center;font-size:17px;font-weight:800}
+.tm.on .tav{box-shadow:0 0 0 2px var(--dk-on-accent)}
+.tav img{width:100%;height:100%;object-fit:cover}
+.tx{display:grid;min-width:0;line-height:1.2}
+.tx b{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tx small{font-size:12px;font-weight:700;color:var(--dk-ink-3);white-space:nowrap;min-height:14px}
+.tm.on .tx small{color:var(--dk-on-accent);opacity:.85}
+.tfix{position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--dk-raise);color:var(--dk-on-raise);
+  font-size:11px;font-weight:800;line-height:18px;text-align:center;box-shadow:0 0 0 2px var(--dk-ground)}
+.lgp.away{visibility:hidden}
