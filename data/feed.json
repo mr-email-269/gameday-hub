@@ -1,0 +1,11 @@
+{"generated_at":"2026-10-19T19:30:00Z",
+ "advisor":{"state":"idle","last_active":"2026-10-19T19:12:00Z","now":"Ready when you text."},
+ "delegations":[
+  {"label":"Week 8 waiver targets","kind":"research","status":"running","started":"2026-10-19T19:05:00Z","done":null},
+  {"label":"Show opponent injuries before kickoff","kind":"feature","status":"queued","started":null,"done":null},
+  {"label":"How the trade deadline works in Sleeper","kind":"research","status":"done","started":"2026-10-18T15:00:00Z","done":"2026-10-18T15:20:00Z"}],
+ "research":{"queue":[
+  {"slug":"week-8-waiver-targets","title":"Week 8 waiver targets","why":"Two of your WRs are on bye in week 8.","status":"running","updated":"2026-10-19T19:05:00Z"},
+  {"slug":"playoff-schedule","title":"Playoff schedule strength","why":"Plan trades around weeks 15 to 17.","status":"planned","updated":"2026-10-19T19:05:00Z"}],
+  "reports":[{"slug":"trade-deadline","title":"How the trade deadline works in Sleeper","date":"2026-10-18","summary":"When trades lock, how vetoes work, and what to do before then."}]},
+ "features":[{"text":"Show opponent injuries before kickoff","status":"new","received":"2026-10-19T18:50:00Z"}]}
