@@ -1,0 +1,2 @@
+{"name":"Gameday","short_name":"Gameday","start_url":"./","scope":"./","display":"standalone","background_color":"#141a24","theme_color":"#141a24",
+ "icons":[{"src":"icon.png","sizes":"180x180","type":"image/png"},{"src":"icon-512.png","sizes":"512x512","type":"image/png"}]}
