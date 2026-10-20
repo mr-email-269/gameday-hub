@@ -1,17 +1,24 @@
 {
- "generated_at": "2026-10-20T10:16:07-04:00",
+ "generated_at": "2026-10-20T10:17:41-04:00",
  "advisor": {
-  "state": "working",
-  "last_active": "2026-10-20T10:15:04",
-  "now": "Researching Waiver targets for the next two weeks"
+  "state": "idle",
+  "last_active": "2026-10-20T10:16:20",
+  "now": "Waiting for your next text"
  },
  "delegations": [
   {
    "label": "Research: Waiver targets for the next two weeks",
    "kind": "research",
-   "status": "running",
+   "status": "done",
    "started": "2026-10-20T10:15:04",
-   "done": null
+   "done": "2026-10-20T10:16:20"
+  },
+  {
+   "label": "Weekly self-review",
+   "kind": "check",
+   "status": "done",
+   "started": "2026-10-20T10:16:30",
+   "done": "2026-10-20T10:17:29"
   }
  ],
  "research": {
@@ -20,8 +27,8 @@
     "slug": "waiver-targets-for-the-next-two-weeks",
     "title": "Waiver targets for the next two weeks",
     "why": "Grab breakout players before the rest of your league does.",
-    "status": "running",
-    "updated": "2026-10-20T10:15:04"
+    "status": "done",
+    "updated": "2026-10-20T10:16:20"
    },
    {
     "slug": "playoff-schedule-check-weeks-15-17",
@@ -29,9 +36,23 @@
     "why": "Which of your players have easy or tough matchups when it matters most.",
     "status": "planned",
     "updated": "2026-10-19T16:23:56"
+   },
+   {
+    "slug": "arsb-trade-package-for-jt-or-brown",
+    "title": "ARSB trade package for JT or Brown",
+    "why": "Your 2-4 Meech Sports Inc team needs RB help, so I'd find what Amon-Ra St. Brown can realistically fetch from the JT and Chase Brown managers.",
+    "status": "planned",
+    "updated": "2026-10-20T10:16:30"
    }
   ],
-  "reports": []
+  "reports": [
+   {
+    "slug": "waiver-targets-for-the-next-two-weeks",
+    "title": "Waiver targets for the next two weeks",
+    "date": "2026-10-20",
+    "summary": "Bid on Omar Cooper Jr. and a fill-in RB (Roschon Johnson, Jawhar Jordan) wherever they're free. Saints players are off in Week 8, so pick up a TE now (Chig Okon"
+   }
+  ]
  },
  "features": [],
  "live": {
