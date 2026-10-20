@@ -1,19 +1,27 @@
 {
- "generated_at": "2026-10-19T23:25:16-04:00",
+ "generated_at": "2026-10-20T10:16:07-04:00",
  "advisor": {
-  "state": "idle",
-  "last_active": "2026-10-19T23:24:08",
-  "now": "Waiting for your next text"
+  "state": "working",
+  "last_active": "2026-10-20T10:15:04",
+  "now": "Researching Waiver targets for the next two weeks"
  },
- "delegations": [],
+ "delegations": [
+  {
+   "label": "Research: Waiver targets for the next two weeks",
+   "kind": "research",
+   "status": "running",
+   "started": "2026-10-20T10:15:04",
+   "done": null
+  }
+ ],
  "research": {
   "queue": [
    {
     "slug": "waiver-targets-for-the-next-two-weeks",
     "title": "Waiver targets for the next two weeks",
     "why": "Grab breakout players before the rest of your league does.",
-    "status": "planned",
-    "updated": "2026-10-19T16:23:56"
+    "status": "running",
+    "updated": "2026-10-20T10:15:04"
    },
    {
     "slug": "playoff-schedule-check-weeks-15-17",
