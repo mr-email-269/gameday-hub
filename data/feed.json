@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T22:25:06-04:00",
+ "generated_at": "2026-10-19T22:47:40-04:00",
  "advisor": {
   "state": "working",
   "last_active": "2026-10-19T19:36:31",
@@ -139,6 +139,13 @@
     "kind": "td",
     "line": "Diggs scored for your opponent in Carbon Arc 😤",
     "texted": false
+   },
+   {
+    "k": "53e2c91a638cfc25",
+    "ts": "2026-10-19T22:47:10",
+    "kind": "td",
+    "line": "TOUCHDOWN White 🔥",
+    "texted": true
    }
   ]
  }
