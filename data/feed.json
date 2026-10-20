@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-19T22:47:40-04:00",
+ "generated_at": "2026-10-19T23:25:16-04:00",
  "advisor": {
-  "state": "working",
-  "last_active": "2026-10-19T19:36:31",
-  "now": "Watching the Monday night game for your guys"
+  "state": "idle",
+  "last_active": "2026-10-19T23:24:08",
+  "now": "Waiting for your next text"
  },
  "delegations": [],
  "research": {
@@ -145,6 +145,34 @@
     "ts": "2026-10-19T22:47:10",
     "kind": "td",
     "line": "TOUCHDOWN White 🔥",
+    "texted": true
+   },
+   {
+    "k": "53e2c91a638cfc25",
+    "ts": "2026-10-19T23:24:08",
+    "kind": "final",
+    "line": "Final: Lost 69.7-80.8 (before any stat corrections)",
+    "texted": true
+   },
+   {
+    "k": "fdb71ed665aff388",
+    "ts": "2026-10-19T23:24:08",
+    "kind": "final",
+    "line": "Final: Lost 121-122.4 (before any stat corrections)",
+    "texted": true
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T23:24:08",
+    "kind": "final",
+    "line": "Final: Won 95.2-90.8 (before any stat corrections)",
+    "texted": true
+   },
+   {
+    "k": "112deb3ab87871ef",
+    "ts": "2026-10-19T23:24:08",
+    "kind": "final",
+    "line": "Final: Lost 99.9-115.2 (before any stat corrections)",
     "texted": true
    }
   ]
