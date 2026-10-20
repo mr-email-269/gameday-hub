@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T19:36:39-04:00",
+ "generated_at": "2026-10-19T20:24:46-04:00",
  "advisor": {
   "state": "working",
   "last_active": "2026-10-19T19:36:31",
@@ -55,6 +55,20 @@
     "kind": "pregame",
     "line": "WSH @ SF kicks off soon. Your starters in it: Purdy, Evans, Pineiro. Your opponent's: Diggs, Samuel",
     "texted": false
+   },
+   {
+    "k": "fdb71ed665aff388",
+    "ts": "2026-10-19T20:24:11",
+    "kind": "td",
+    "line": "Purdy throws a TD 🔥",
+    "texted": true
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T20:24:11",
+    "kind": "td",
+    "line": "Purdy throws a TD 🔥",
+    "texted": true
    }
   ]
  }
