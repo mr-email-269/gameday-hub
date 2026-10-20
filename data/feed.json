@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T21:40:01-04:00",
+ "generated_at": "2026-10-19T22:25:06-04:00",
  "advisor": {
   "state": "working",
   "last_active": "2026-10-19T19:36:31",
@@ -131,6 +131,13 @@
     "ts": "2026-10-19T21:39:24",
     "kind": "half",
     "line": "Halftime: you 88.4, them 78.1",
+    "texted": false
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T22:25:01",
+    "kind": "td",
+    "line": "Diggs scored for your opponent in Carbon Arc 😤",
     "texted": false
    }
   ]
