@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T20:36:49-04:00",
+ "generated_at": "2026-10-19T21:12:54-04:00",
  "advisor": {
   "state": "working",
   "last_active": "2026-10-19T19:36:31",
@@ -89,6 +89,20 @@
     "ts": "2026-10-19T20:35:38",
     "kind": "big",
     "line": "Purdy to Evans for 54 💨",
+    "texted": false
+   },
+   {
+    "k": "fdb71ed665aff388",
+    "ts": "2026-10-19T21:12:32",
+    "kind": "fumble",
+    "line": "Purdy lost a fumble 😬",
+    "texted": false
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T21:12:32",
+    "kind": "fumble",
+    "line": "Purdy lost a fumble 😬",
     "texted": false
    }
   ]
