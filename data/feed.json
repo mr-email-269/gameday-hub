@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T21:12:54-04:00",
+ "generated_at": "2026-10-19T21:35:28-04:00",
  "advisor": {
   "state": "working",
   "last_active": "2026-10-19T19:36:31",
@@ -104,6 +104,13 @@
     "kind": "fumble",
     "line": "Purdy lost a fumble 😬",
     "texted": false
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T21:34:02",
+    "kind": "injury",
+    "line": "Heads up, Evans just got hurt 👀",
+    "texted": true
    }
   ]
  }
