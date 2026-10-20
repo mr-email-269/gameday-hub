@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T21:35:28-04:00",
+ "generated_at": "2026-10-19T21:40:01-04:00",
  "advisor": {
   "state": "working",
   "last_active": "2026-10-19T19:36:31",
@@ -111,6 +111,27 @@
     "kind": "injury",
     "line": "Heads up, Evans just got hurt 👀",
     "texted": true
+   },
+   {
+    "k": "53e2c91a638cfc25",
+    "ts": "2026-10-19T21:39:24",
+    "kind": "half",
+    "line": "Halftime: you 55.7, them 78.8",
+    "texted": false
+   },
+   {
+    "k": "fdb71ed665aff388",
+    "ts": "2026-10-19T21:39:24",
+    "kind": "half",
+    "line": "Halftime: you 118.2, them 122.4",
+    "texted": false
+   },
+   {
+    "k": "3e2236848b3b873b",
+    "ts": "2026-10-19T21:39:24",
+    "kind": "half",
+    "line": "Halftime: you 88.4, them 78.1",
+    "texted": false
    }
   ]
  }
