@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-10-20T10:17:41-04:00",
+ "generated_at": "2026-10-22T23:28:03-04:00",
  "advisor": {
   "state": "idle",
-  "last_active": "2026-10-20T10:16:20",
+  "last_active": "2026-10-22T23:27:27",
   "now": "Waiting for your next text"
  },
  "delegations": [
