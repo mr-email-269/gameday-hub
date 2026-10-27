@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-27T10:16:19-04:00",
+ "generated_at": "2026-10-27T10:17:52-04:00",
  "advisor": {
-  "state": "working",
-  "last_active": "2026-10-27T10:15:04",
-  "now": "Researching Playoff schedule check (weeks 15-17)"
+  "state": "idle",
+  "last_active": "2026-10-27T10:16:32",
+  "now": "Waiting for your next text"
  },
  "delegations": [
   {
@@ -23,9 +23,16 @@
   {
    "label": "Research: Playoff schedule check (weeks 15-17)",
    "kind": "research",
-   "status": "running",
+   "status": "done",
    "started": "2026-10-27T10:15:04",
-   "done": null
+   "done": "2026-10-27T10:16:32"
+  },
+  {
+   "label": "Weekly self-review",
+   "kind": "check",
+   "status": "done",
+   "started": "2026-10-27T10:16:40",
+   "done": "2026-10-27T10:17:42"
   }
  ],
  "research": {
@@ -41,8 +48,8 @@
     "slug": "playoff-schedule-check-weeks-15-17",
     "title": "Playoff schedule check (weeks 15-17)",
     "why": "Which of your players have easy or tough matchups when it matters most.",
-    "status": "running",
-    "updated": "2026-10-27T10:15:04"
+    "status": "done",
+    "updated": "2026-10-27T10:16:32"
    },
    {
     "slug": "arsb-trade-package-for-jt-or-brown",
@@ -50,9 +57,22 @@
     "why": "Your 2-4 Meech Sports Inc team needs RB help, so I'd find what Amon-Ra St. Brown can realistically fetch from the JT and Chase Brown managers.",
     "status": "planned",
     "updated": "2026-10-20T10:16:30"
+   },
+   {
+    "slug": "rebalance-4-way-trade-using-value-charts",
+    "title": "Rebalance 4-way trade using value charts",
+    "why": "You want your Meech Sports Invitational deal (Diggs+Downs+PWash for Philip's Cook, AJones for Keith's Tuten, Tucker for Preston's KMitchell) balanced by trade value charts, and a fresh check keeps all",
+    "status": "planned",
+    "updated": "2026-10-27T10:16:40"
    }
   ],
   "reports": [
+   {
+    "slug": "playoff-schedule-check-weeks-15-17",
+    "title": "Playoff schedule check (weeks 15-17)",
+    "date": "2026-10-27",
+    "summary": "Your Vikings, Chiefs, Colts and Steelers players have good weeks 15-17 schedules, so lean on them. Brock Purdy and Cade Otton face tough defenses in the playoff"
+   },
    {
     "slug": "waiver-targets-for-the-next-two-weeks",
     "title": "Waiver targets for the next two weeks",
