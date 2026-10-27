@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-22T23:52:23-04:00",
+ "generated_at": "2026-10-27T10:16:19-04:00",
  "advisor": {
-  "state": "idle",
-  "last_active": "2026-10-22T23:50:52",
-  "now": "Waiting for your next text"
+  "state": "working",
+  "last_active": "2026-10-27T10:15:04",
+  "now": "Researching Playoff schedule check (weeks 15-17)"
  },
  "delegations": [
   {
@@ -19,6 +19,13 @@
    "status": "done",
    "started": "2026-10-20T10:16:30",
    "done": "2026-10-20T10:17:29"
+  },
+  {
+   "label": "Research: Playoff schedule check (weeks 15-17)",
+   "kind": "research",
+   "status": "running",
+   "started": "2026-10-27T10:15:04",
+   "done": null
   }
  ],
  "research": {
@@ -34,8 +41,8 @@
     "slug": "playoff-schedule-check-weeks-15-17",
     "title": "Playoff schedule check (weeks 15-17)",
     "why": "Which of your players have easy or tough matchups when it matters most.",
-    "status": "planned",
-    "updated": "2026-10-19T16:23:56"
+    "status": "running",
+    "updated": "2026-10-27T10:15:04"
    },
    {
     "slug": "arsb-trade-package-for-jt-or-brown",
