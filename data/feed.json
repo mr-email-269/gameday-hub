@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-10-27T10:17:52-04:00",
+ "generated_at": "2026-11-03T10:15:40-05:00",
  "advisor": {
-  "state": "idle",
-  "last_active": "2026-10-27T10:16:32",
-  "now": "Waiting for your next text"
+  "state": "working",
+  "last_active": "2026-11-03T10:15:04",
+  "now": "Researching ARSB trade package for JT or Brown"
  },
  "delegations": [
   {
@@ -33,6 +33,13 @@
    "status": "done",
    "started": "2026-10-27T10:16:40",
    "done": "2026-10-27T10:17:42"
+  },
+  {
+   "label": "Research: ARSB trade package for JT or Brown",
+   "kind": "research",
+   "status": "running",
+   "started": "2026-11-03T10:15:04",
+   "done": null
   }
  ],
  "research": {
@@ -55,8 +62,8 @@
     "slug": "arsb-trade-package-for-jt-or-brown",
     "title": "ARSB trade package for JT or Brown",
     "why": "Your 2-4 Meech Sports Inc team needs RB help, so I'd find what Amon-Ra St. Brown can realistically fetch from the JT and Chase Brown managers.",
-    "status": "planned",
-    "updated": "2026-10-20T10:16:30"
+    "status": "running",
+    "updated": "2026-11-03T10:15:04"
    },
    {
     "slug": "rebalance-4-way-trade-using-value-charts",
