@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-03T10:15:40-05:00",
+ "generated_at": "2026-11-03T10:17:13-05:00",
  "advisor": {
-  "state": "working",
-  "last_active": "2026-11-03T10:15:04",
-  "now": "Researching ARSB trade package for JT or Brown"
+  "state": "idle",
+  "last_active": "2026-11-03T10:15:57",
+  "now": "Waiting for your next text"
  },
  "delegations": [
   {
@@ -37,9 +37,16 @@
   {
    "label": "Research: ARSB trade package for JT or Brown",
    "kind": "research",
-   "status": "running",
+   "status": "done",
    "started": "2026-11-03T10:15:04",
-   "done": null
+   "done": "2026-11-03T10:15:57"
+  },
+  {
+   "label": "Weekly self-review",
+   "kind": "check",
+   "status": "done",
+   "started": "2026-11-03T10:16:05",
+   "done": "2026-11-03T10:16:59"
   }
  ],
  "research": {
@@ -62,8 +69,8 @@
     "slug": "arsb-trade-package-for-jt-or-brown",
     "title": "ARSB trade package for JT or Brown",
     "why": "Your 2-4 Meech Sports Inc team needs RB help, so I'd find what Amon-Ra St. Brown can realistically fetch from the JT and Chase Brown managers.",
-    "status": "running",
-    "updated": "2026-11-03T10:15:04"
+    "status": "done",
+    "updated": "2026-11-03T10:15:57"
    },
    {
     "slug": "rebalance-4-way-trade-using-value-charts",
@@ -71,9 +78,22 @@
     "why": "You want your Meech Sports Invitational deal (Diggs+Downs+PWash for Philip's Cook, AJones for Keith's Tuten, Tucker for Preston's KMitchell) balanced by trade value charts, and a fresh check keeps all",
     "status": "planned",
     "updated": "2026-10-27T10:16:40"
+   },
+   {
+    "slug": "replace-jacoby-brissett-as-your-starting-qb",
+    "title": "Replace Jacoby Brissett as your starting QB",
+    "why": "You're starting Brissett in Carbon Arc, Meech Invitational and EPIC, and with Purdy, Goff and Shough sitting on your benches there may be a better QB play available this week.",
+    "status": "planned",
+    "updated": "2026-11-03T10:16:05"
    }
   ],
   "reports": [
+   {
+    "slug": "arsb-trade-package-for-jt-or-brown",
+    "title": "ARSB trade package for JT or Brown",
+    "date": "2026-11-03",
+    "summary": "Amon-Ra is worth slightly more than Jonathan Taylor, so ask for JT straight up and let them add a small piece. Chase Brown alone isn't enough for him, so make t"
+   },
    {
     "slug": "playoff-schedule-check-weeks-15-17",
     "title": "Playoff schedule check (weeks 15-17)",
