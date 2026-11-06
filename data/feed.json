@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-03T10:17:13-05:00",
+ "generated_at": "2026-11-06T10:16:35-05:00",
  "advisor": {
   "state": "idle",
-  "last_active": "2026-11-03T10:15:57",
+  "last_active": "2026-11-06T10:16:22",
   "now": "Waiting for your next text"
  },
  "delegations": [
@@ -47,6 +47,13 @@
    "status": "done",
    "started": "2026-11-03T10:16:05",
    "done": "2026-11-03T10:16:59"
+  },
+  {
+   "label": "Research: Rebalance 4-way trade using value charts",
+   "kind": "research",
+   "status": "done",
+   "started": "2026-11-06T10:15:05",
+   "done": "2026-11-06T10:16:22"
   }
  ],
  "research": {
@@ -76,8 +83,8 @@
     "slug": "rebalance-4-way-trade-using-value-charts",
     "title": "Rebalance 4-way trade using value charts",
     "why": "You want your Meech Sports Invitational deal (Diggs+Downs+PWash for Philip's Cook, AJones for Keith's Tuten, Tucker for Preston's KMitchell) balanced by trade value charts, and a fresh check keeps all",
-    "status": "planned",
-    "updated": "2026-10-27T10:16:40"
+    "status": "done",
+    "updated": "2026-11-06T10:16:22"
    },
    {
     "slug": "replace-jacoby-brissett-as-your-starting-qb",
@@ -85,9 +92,22 @@
     "why": "You're starting Brissett in Carbon Arc, Meech Invitational and EPIC, and with Purdy, Goff and Shough sitting on your benches there may be a better QB play available this week.",
     "status": "planned",
     "updated": "2026-11-03T10:16:05"
+   },
+   {
+    "slug": "questionable-starters-watson-st-brown-evans",
+    "title": "Questionable starters: Watson, St. Brown, Evans",
+    "why": "Christian Watson is questionable in both Carbon Arc and EPIC, and Amon-Ra is questionable in 🐝🐀, so you need backup plans before kickoff.",
+    "status": "planned",
+    "updated": "2026-11-06T10:16:31"
    }
   ],
   "reports": [
+   {
+    "slug": "rebalance-4-way-trade-using-value-charts",
+    "title": "Rebalance 4-way trade using value charts",
+    "date": "2026-11-06",
+    "summary": "The current version is lopsided against Keith. Moving Josh Downs from Philip's side to Keith's side fixes most of it. First check your rosters: your Sleeper tea"
+   },
    {
     "slug": "arsb-trade-package-for-jt-or-brown",
     "title": "ARSB trade package for JT or Brown",
