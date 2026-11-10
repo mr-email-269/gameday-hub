@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T10:16:31-05:00",
+ "generated_at": "2026-11-10T10:18:04-05:00",
  "advisor": {
   "state": "idle",
   "last_active": "2026-11-10T10:15:58",
@@ -65,9 +65,9 @@
   {
    "label": "Weekly self-review",
    "kind": "check",
-   "status": "running",
+   "status": "done",
    "started": "2026-11-10T10:16:07",
-   "done": null
+   "done": "2026-11-10T10:17:02"
   }
  ],
  "research": {
