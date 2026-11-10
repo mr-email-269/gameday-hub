@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-09T14:31:25-05:00",
+ "generated_at": "2026-11-10T10:16:31-05:00",
  "advisor": {
   "state": "idle",
-  "last_active": "2026-11-09T14:31:12",
+  "last_active": "2026-11-10T10:15:58",
   "now": "Waiting for your next text"
  },
  "delegations": [
@@ -54,6 +54,20 @@
    "status": "done",
    "started": "2026-11-06T10:15:05",
    "done": "2026-11-06T10:16:22"
+  },
+  {
+   "label": "Research: Replace Jacoby Brissett as your starting QB",
+   "kind": "research",
+   "status": "done",
+   "started": "2026-11-10T10:15:02",
+   "done": "2026-11-10T10:15:58"
+  },
+  {
+   "label": "Weekly self-review",
+   "kind": "check",
+   "status": "running",
+   "started": "2026-11-10T10:16:07",
+   "done": null
   }
  ],
  "research": {
@@ -90,8 +104,8 @@
     "slug": "replace-jacoby-brissett-as-your-starting-qb",
     "title": "Replace Jacoby Brissett as your starting QB",
     "why": "You're starting Brissett in Carbon Arc, Meech Invitational and EPIC, and with Purdy, Goff and Shough sitting on your benches there may be a better QB play available this week.",
-    "status": "planned",
-    "updated": "2026-11-03T10:16:05"
+    "status": "done",
+    "updated": "2026-11-10T10:15:58"
    },
    {
     "slug": "questionable-starters-watson-st-brown-evans",
@@ -99,9 +113,22 @@
     "why": "Christian Watson is questionable in both Carbon Arc and EPIC, and Amon-Ra is questionable in 🐝🐀, so you need backup plans before kickoff.",
     "status": "planned",
     "updated": "2026-11-06T10:16:31"
+   },
+   {
+    "slug": "replace-stevenson-and-waddle-this-week",
+    "title": "Replace Stevenson and Waddle this week",
+    "why": "Rhamondre Stevenson is Out in EPIC and Jaylen Waddle is Out in your 🐝🐀 lineup, so you have two empty starting spots to fill from waivers or your bench right now.",
+    "status": "planned",
+    "updated": "2026-11-10T10:16:07"
    }
   ],
   "reports": [
+   {
+    "slug": "replace-jacoby-brissett-as-your-starting-qb",
+    "title": "Replace Jacoby Brissett as your starting QB",
+    "date": "2026-11-10",
+    "summary": "Your live Sleeper rosters don't have Jacoby Brissett on them, so there's nothing to replace. Purdy is your starter in Meech and Carbon Arc and Goff is your star"
+   },
    {
     "slug": "rebalance-4-way-trade-using-value-charts",
     "title": "Rebalance 4-way trade using value charts",
