@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-13T23:28:08-05:00",
+ "generated_at": "2026-11-17T10:16:28-05:00",
  "advisor": {
   "state": "idle",
-  "last_active": "2026-11-13T23:27:13",
+  "last_active": "2026-11-17T10:16:24",
   "now": "Waiting for your next text"
  },
  "delegations": [
@@ -68,6 +68,13 @@
    "status": "done",
    "started": "2026-11-10T10:16:07",
    "done": "2026-11-10T10:17:02"
+  },
+  {
+   "label": "Research: Questionable starters: Watson, St. Brown, Evans",
+   "kind": "research",
+   "status": "done",
+   "started": "2026-11-17T10:15:04",
+   "done": "2026-11-17T10:16:24"
   }
  ],
  "research": {
@@ -111,8 +118,8 @@
     "slug": "questionable-starters-watson-st-brown-evans",
     "title": "Questionable starters: Watson, St. Brown, Evans",
     "why": "Christian Watson is questionable in both Carbon Arc and EPIC, and Amon-Ra is questionable in 🐝🐀, so you need backup plans before kickoff.",
-    "status": "planned",
-    "updated": "2026-11-06T10:16:31"
+    "status": "done",
+    "updated": "2026-11-17T10:16:24"
    },
    {
     "slug": "replace-stevenson-and-waddle-this-week",
@@ -123,6 +130,12 @@
    }
   ],
   "reports": [
+   {
+    "slug": "questionable-starters-watson-st-brown-evans",
+    "title": "Questionable starters: Watson, St. Brown, Evans",
+    "date": "2026-11-17",
+    "summary": "Christian Watson isn't hurt. Green Bay has its bye in Week 11, so bench him in Carbon Arc and EPIC. Start Amon-Ra, who played through his rib injury and scored "
+   },
    {
     "slug": "replace-jacoby-brissett-as-your-starting-qb",
     "title": "Replace Jacoby Brissett as your starting QB",
