@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T10:16:28-05:00",
+ "generated_at": "2026-11-17T10:18:01-05:00",
  "advisor": {
   "state": "idle",
   "last_active": "2026-11-17T10:16:24",
@@ -75,6 +75,13 @@
    "status": "done",
    "started": "2026-11-17T10:15:04",
    "done": "2026-11-17T10:16:24"
+  },
+  {
+   "label": "Weekly self-review",
+   "kind": "check",
+   "status": "done",
+   "started": "2026-11-17T10:16:33",
+   "done": "2026-11-17T10:17:21"
   }
  ],
  "research": {
@@ -127,6 +134,13 @@
     "why": "Rhamondre Stevenson is Out in EPIC and Jaylen Waddle is Out in your 🐝🐀 lineup, so you have two empty starting spots to fill from waivers or your bench right now.",
     "status": "planned",
     "updated": "2026-11-10T10:16:07"
+   },
+   {
+    "slug": "puka-nacua-return-timeline-hold-or-cut",
+    "title": "Puka Nacua return timeline: hold or cut",
+    "why": "Puka is stashed on your IR in Meech Sports Invitational and taking a bench spot in EPIC, so you need to know if he is worth keeping in both.",
+    "status": "planned",
+    "updated": "2026-11-17T10:16:33"
    }
   ],
   "reports": [
