@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-11-17T10:18:01-05:00",
+ "generated_at": "2026-11-20T10:16:11-05:00",
  "advisor": {
   "state": "idle",
-  "last_active": "2026-11-17T10:16:24",
+  "last_active": "2026-11-20T10:16:06",
   "now": "Waiting for your next text"
  },
  "delegations": [
@@ -82,6 +82,13 @@
    "status": "done",
    "started": "2026-11-17T10:16:33",
    "done": "2026-11-17T10:17:21"
+  },
+  {
+   "label": "Research: Replace Stevenson and Waddle this week",
+   "kind": "research",
+   "status": "done",
+   "started": "2026-11-20T10:15:04",
+   "done": "2026-11-20T10:16:06"
   }
  ],
  "research": {
@@ -132,8 +139,8 @@
     "slug": "replace-stevenson-and-waddle-this-week",
     "title": "Replace Stevenson and Waddle this week",
     "why": "Rhamondre Stevenson is Out in EPIC and Jaylen Waddle is Out in your 🐝🐀 lineup, so you have two empty starting spots to fill from waivers or your bench right now.",
-    "status": "planned",
-    "updated": "2026-11-10T10:16:07"
+    "status": "done",
+    "updated": "2026-11-20T10:16:06"
    },
    {
     "slug": "puka-nacua-return-timeline-hold-or-cut",
@@ -144,6 +151,12 @@
    }
   ],
   "reports": [
+   {
+    "slug": "replace-stevenson-and-waddle-this-week",
+    "title": "Replace Stevenson and Waddle this week",
+    "date": "2026-11-20",
+    "summary": "Your 🐝🐀 lineup has an empty RB spot, and that's the real problem, so pick up a waiver RB who plays Sunday. Keep Waddle in: he practiced in full Wednesday and Th"
+   },
    {
     "slug": "questionable-starters-watson-st-brown-evans",
     "title": "Questionable starters: Watson, St. Brown, Evans",
