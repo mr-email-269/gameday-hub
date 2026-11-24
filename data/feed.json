@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-20T10:17:44-05:00",
+ "generated_at": "2026-11-24T10:15:30-05:00",
  "advisor": {
-  "state": "idle",
-  "last_active": "2026-11-20T10:16:06",
-  "now": "Waiting for your next text"
+  "state": "working",
+  "last_active": "2026-11-24T10:15:04",
+  "now": "Researching Puka Nacua return timeline: hold or cut"
  },
  "delegations": [
   {
@@ -89,6 +89,13 @@
    "status": "done",
    "started": "2026-11-20T10:15:04",
    "done": "2026-11-20T10:16:06"
+  },
+  {
+   "label": "Research: Puka Nacua return timeline: hold or cut",
+   "kind": "research",
+   "status": "running",
+   "started": "2026-11-24T10:15:04",
+   "done": null
   }
  ],
  "research": {
@@ -146,8 +153,8 @@
     "slug": "puka-nacua-return-timeline-hold-or-cut",
     "title": "Puka Nacua return timeline: hold or cut",
     "why": "Puka is stashed on your IR in Meech Sports Invitational and taking a bench spot in EPIC, so you need to know if he is worth keeping in both.",
-    "status": "planned",
-    "updated": "2026-11-17T10:16:33"
+    "status": "running",
+    "updated": "2026-11-24T10:15:04"
    },
    {
     "slug": "fill-your-empty-rb-and-flex-slots",
