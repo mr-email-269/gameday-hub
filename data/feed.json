@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-24T10:15:30-05:00",
+ "generated_at": "2026-11-24T10:17:02-05:00",
  "advisor": {
-  "state": "working",
-  "last_active": "2026-11-24T10:15:04",
-  "now": "Researching Puka Nacua return timeline: hold or cut"
+  "state": "idle",
+  "last_active": "2026-11-24T10:15:40",
+  "now": "Waiting for your next text"
  },
  "delegations": [
   {
@@ -93,9 +93,16 @@
   {
    "label": "Research: Puka Nacua return timeline: hold or cut",
    "kind": "research",
-   "status": "running",
+   "status": "done",
    "started": "2026-11-24T10:15:04",
-   "done": null
+   "done": "2026-11-24T10:15:40"
+  },
+  {
+   "label": "Weekly self-review",
+   "kind": "check",
+   "status": "done",
+   "started": "2026-11-24T10:15:48",
+   "done": "2026-11-24T10:16:29"
   }
  ],
  "research": {
@@ -153,8 +160,8 @@
     "slug": "puka-nacua-return-timeline-hold-or-cut",
     "title": "Puka Nacua return timeline: hold or cut",
     "why": "Puka is stashed on your IR in Meech Sports Invitational and taking a bench spot in EPIC, so you need to know if he is worth keeping in both.",
-    "status": "running",
-    "updated": "2026-11-24T10:15:04"
+    "status": "done",
+    "updated": "2026-11-24T10:15:40"
    },
    {
     "slug": "fill-your-empty-rb-and-flex-slots",
@@ -162,9 +169,22 @@
     "why": "Your 🐝🐀 team has an empty RB slot with Woody Marks out, and Carbon Arc has an empty FLEX, so you're leaving points on the table at 5-5 in both.",
     "status": "planned",
     "updated": "2026-11-20T10:16:13"
+   },
+   {
+    "slug": "kyren-williams-vs-blake-corum-who-to-start",
+    "title": "Kyren Williams vs Blake Corum: who to start",
+    "why": "In 🐝🐀 you have both Rams backs on your bench with Kyren questionable and Woody Marks out, so sorting out the split could fix your RB2 spot.",
+    "status": "planned",
+    "updated": "2026-11-24T10:15:48"
    }
   ],
   "reports": [
+   {
+    "slug": "puka-nacua-return-timeline-hold-or-cut",
+    "title": "Puka Nacua return timeline: hold or cut",
+    "date": "2026-11-24",
+    "summary": "Puka Nacua is out for the rest of the season, playoffs included, after knee surgery. If these are normal redraft leagues, he has no value left to you: drop him "
+   },
    {
     "slug": "replace-stevenson-and-waddle-this-week",
     "title": "Replace Stevenson and Waddle this week",
