@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-24T10:17:02-05:00",
+ "generated_at": "2026-11-27T10:15:29-05:00",
  "advisor": {
-  "state": "idle",
-  "last_active": "2026-11-24T10:15:40",
-  "now": "Waiting for your next text"
+  "state": "working",
+  "last_active": "2026-11-27T10:15:06",
+  "now": "Researching Fill your empty RB and FLEX slots"
  },
  "delegations": [
   {
@@ -103,6 +103,13 @@
    "status": "done",
    "started": "2026-11-24T10:15:48",
    "done": "2026-11-24T10:16:29"
+  },
+  {
+   "label": "Research: Fill your empty RB and FLEX slots",
+   "kind": "research",
+   "status": "running",
+   "started": "2026-11-27T10:15:06",
+   "done": null
   }
  ],
  "research": {
@@ -167,8 +174,8 @@
     "slug": "fill-your-empty-rb-and-flex-slots",
     "title": "Fill your empty RB and FLEX slots",
     "why": "Your 🐝🐀 team has an empty RB slot with Woody Marks out, and Carbon Arc has an empty FLEX, so you're leaving points on the table at 5-5 in both.",
-    "status": "planned",
-    "updated": "2026-11-20T10:16:13"
+    "status": "running",
+    "updated": "2026-11-27T10:15:06"
    },
    {
     "slug": "kyren-williams-vs-blake-corum-who-to-start",
