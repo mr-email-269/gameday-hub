@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-27T10:15:29-05:00",
+ "generated_at": "2026-11-27T10:17:02-05:00",
  "advisor": {
-  "state": "working",
-  "last_active": "2026-11-27T10:15:06",
-  "now": "Researching Fill your empty RB and FLEX slots"
+  "state": "idle",
+  "last_active": "2026-11-27T10:16:25",
+  "now": "Waiting for your next text"
  },
  "delegations": [
   {
@@ -107,9 +107,9 @@
   {
    "label": "Research: Fill your empty RB and FLEX slots",
    "kind": "research",
-   "status": "running",
+   "status": "done",
    "started": "2026-11-27T10:15:06",
-   "done": null
+   "done": "2026-11-27T10:16:25"
   }
  ],
  "research": {
@@ -174,8 +174,8 @@
     "slug": "fill-your-empty-rb-and-flex-slots",
     "title": "Fill your empty RB and FLEX slots",
     "why": "Your 🐝🐀 team has an empty RB slot with Woody Marks out, and Carbon Arc has an empty FLEX, so you're leaving points on the table at 5-5 in both.",
-    "status": "running",
-    "updated": "2026-11-27T10:15:06"
+    "status": "done",
+    "updated": "2026-11-27T10:16:25"
    },
    {
     "slug": "kyren-williams-vs-blake-corum-who-to-start",
@@ -183,9 +183,22 @@
     "why": "In 🐝🐀 you have both Rams backs on your bench with Kyren questionable and Woody Marks out, so sorting out the split could fix your RB2 spot.",
     "status": "planned",
     "updated": "2026-11-24T10:15:48"
+   },
+   {
+    "slug": "replace-injured-tes-loveland-and-higbee",
+    "title": "Replace injured TEs: Loveland and Higbee",
+    "why": "Colston Loveland is Out in your 🐝🐀 league and Tyler Higbee is Out in Carbon Arc, so you need a TE for each lineup this week.",
+    "status": "planned",
+    "updated": "2026-11-27T10:16:31"
    }
   ],
   "reports": [
+   {
+    "slug": "fill-your-empty-rb-and-flex-slots",
+    "title": "Fill your empty RB and FLEX slots",
+    "date": "2026-11-27",
+    "summary": "Your RB and FLEX slots are already full. The empty spots in 🐝🐀, Carbon Arc and EPIC belong to players whose games are over, so they're locked. The moves that st"
+   },
    {
     "slug": "puka-nacua-return-timeline-hold-or-cut",
     "title": "Puka Nacua return timeline: hold or cut",
